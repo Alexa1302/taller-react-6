@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { fireEvent, render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("Debería cambiar el texto al hacer clic en el botón", () => {
+    render(<App/>);
+    const buttonElement = screen.getByText("Hacer clic aquí");
+    fireEvent.click(buttonElement);
+    const nuevoTexto = screen.getByText("¡Gracias por hacer clic!");
+    expect(nuevoTexto).toBeInTheDocument();
 });
